@@ -40,3 +40,39 @@
 - Unique constraints on email and phone help prevent duplicate records.
 - Appointment status is stored as an integer for simple status tracking.
 -->
+
+## MongoDB Collection Design
+
+### Collection: prescriptions
+
+```json
+{
+  "_id": "ObjectId('64abc123456')",
+  "appointmentId": 51,
+  "patientId": 12,
+  "doctorId": 7,
+  "medications": [
+    {
+      "name": "Paracetamol",
+      "dosage": "500mg",
+      "frequency": "Every 6 hours",
+      "duration": "5 days"
+    }
+  ],
+  "doctorNotes": "Take 1 tablet every 6 hours after meals.",
+  "refillCount": 2,
+  "pharmacy": {
+    "name": "Walgreens SF",
+    "location": "Market Street"
+  },
+  "tags": ["pain-relief", "fever"],
+  "createdAt": "2026-04-18T10:30:00Z"
+}
+```
+
+<!-- Design Notes:
+- MongoDB is used for flexible prescription data that may vary from one appointment to another.
+- The medications field uses an array to support multiple prescribed medicines in one document.
+- The pharmacy field is embedded as a nested object for convenience.
+- Patient and doctor are referenced by ID instead of embedding full objects, which keeps the document smaller and easier to maintain.
+-->
