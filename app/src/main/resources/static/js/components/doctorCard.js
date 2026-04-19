@@ -32,14 +32,14 @@ export function createDoctorCard(doctor) {
         const removeBtn = document.createElement("button");
         removeBtn.textContent = "Delete";
         removeBtn.addEventListener("click", () => {
-            alert("Delete action placeholder");
+            alert("Delete requires backend integration.");
         });
         actionsDiv.appendChild(removeBtn);
     } else if (role === "patient" || role === "loggedPatient") {
         const bookBtn = document.createElement("button");
         bookBtn.textContent = "Book Now";
         bookBtn.addEventListener("click", () => {
-            alert("Booking action placeholder");
+            alert("Please log in as a patient to book an appointment.");
         });
         actionsDiv.appendChild(bookBtn);
     }
