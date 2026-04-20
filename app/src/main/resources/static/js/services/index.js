@@ -1,3 +1,4 @@
+import { openModal } from "../components/modals.js";
 import { API_BASE_URL } from "../config/config.js";
 
 const ADMIN_API = API_BASE_URL + "/admin";
@@ -8,6 +9,7 @@ window.onload = function () {
     if (adminBtn) {
         adminBtn.addEventListener("click", () => {
             localStorage.setItem("userRole", "admin");
+            openModal("adminLogin");
         });
     }
 
@@ -15,6 +17,7 @@ window.onload = function () {
     if (doctorBtn) {
         doctorBtn.addEventListener("click", () => {
             localStorage.setItem("userRole", "doctor");
+            openModal("doctorLogin");
         });
     }
 
@@ -22,6 +25,7 @@ window.onload = function () {
     if (patientBtn) {
         patientBtn.addEventListener("click", () => {
             localStorage.setItem("userRole", "patient");
+            openModal("patientLogin");
         });
     }
 };

@@ -16,7 +16,7 @@ function renderHeader() {
 
     if (role === "admin" && token) {
         headerContent += `
-            <button onclick="alert('Add Doctor clicked')">Add Doctor</button>
+            <button onclick="openModal('addDoctor')">Add Doctor</button>
             <button onclick="logout()">Logout</button>
         `;
     } else if (role === "doctor" && token) {
