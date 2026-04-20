@@ -1,24 +1,31 @@
-name: Backend Compile CI
+name: Java Backend CI
 
 on:
   push:
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
 
 jobs:
-  compile-backend:
+  compile:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: app
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Java 17
+      - name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
 
-      - name: Compile backend with Maven
-        run: |
-          cd app
-          mvn clean compile
+      - name: Make Maven wrapper executable
+        run: chmod +x mvnw
+
+      - name: Compile backend using Maven Wrapper
+        run: ./mvnw clean compile
